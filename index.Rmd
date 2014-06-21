@@ -1,0 +1,39 @@
+---
+title       : Car Trends
+subtitle    : 
+author      : Sasidhar Donaparthi
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Objective 2
+Objective of this presentation is to analyze the The data was extracted from the 1974
+_Motor Trend_ US magazine, and comprises fuel consumption and 10 aspects of automobile design
+and performance for 32 automobiles (1973-74 models). Following are the analysis activities
+
+* Exploratory Analysis
+* Fit a Liner model to estimate the miles/(US) gallon
+* Conclusion
+---
+
+## Slide 3
+```{r echo=FALSE,results='asis'}
+data(mtcars)
+par(mfrow=c(2,2))
+plot(mtcars$wt,mtcars$mpg,xlab="Weight in 1000 lbs",ylab="miles/(US) gallon",pch=21,col=blue)
+plot(mcarts)
+```
+---
+
+## Slide 4
+
+---
+
+## Slide 5
+
+
