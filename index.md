@@ -31,41 +31,29 @@ Objective of this presentation is provide to update on following after analyzing
 ## Exploratory Analysis
 Follwing charts shows the relationship between various predictors and the outcome miles/(US) gallon
 
-```{r echo=FALSE,results='asis',fig.width=10, fig.height=6.5}
-data(mtcars)
-mydata <- mtcars
-par(mfrow=c(2,2))
-plot(mtcars$wt,mtcars$mpg,xlab="Weight in 1000 lbs",ylab="miles/(US) gallon",pch=21,col="blue")
-plot(mtcars$hp,mtcars$mpg,xlab="Gross Horse Power(hp)",ylab="miles/(US) gallon",pch=21,col="blue")
-plot(mtcars$cyl,mtcars$mpg,xlab="Number of Cylinders",ylab="miles/(US) gallon",pch=21,col="blue")
-plot(mtcars$disp,mtcars$mpg,xlab="Displacement (cu. in.)",ylab="miles/(US) gallon",pch=21,col="blue")
-```
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1.png) 
+
 
 ---
 
 ## Linear Model
 
 We use number of cylenders, horse power, weight as the <em>predictors</em> and the <em>outcome</em> as miles/(US) gallon
-```{r echo=FALSE, results='hide', eval=TRUE}
-corcoef <- cor(mtcars$cyl,mtcars$disp)
-```
-Displacement has a strong relationship with number of cylinders, corelation coffecient = `r corcoef`
+
+
+Displacement has a strong relationship with number of cylinders, corelation coffecient = 0.902
 Let's consider # of clylinders instead of displacement.
 
 Here is our model
 
-```{r echo=FALSE, results='hide', eval=TRUE}
-library(caret)
-set.seed(12345)
-intrain = createDataPartition(mydata$mpg,p=0.7,list=FALSE)
-training = mydata[intrain,]
-testing = mydata[-intrain,]
-dim(training);dim(testing)
+
+
+
+```r
+modFit <- train(mpg ~ cyl + wt + hp + am, method = "lm", data = training)
+mpg_predict <- predict(modFit, newdata = testing)
 ```
-```{r echo=TRUE, results='hide', eval=TRUE}
-modFit <- train(mpg ~ cyl + wt + hp + am, method="lm",data=training)
-mpg_predict <- predict(modFit,newdata=testing)
-```
+
 
 ---
 
@@ -77,7 +65,6 @@ mpg_predict <- predict(modFit,newdata=testing)
 You can use <a href="http://sdonapar.shinyapps.io/myshinyapp">"Predict Your Car Milage"</a> for interactive application
 
 
-```{r, echo=FALSE}
 
-```
+
 
